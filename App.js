@@ -7,13 +7,13 @@ import Icon from "react-native-vector-icons/FontAwesome6";
 const QuestionBox = ({ label, image, options, selectedValue, onValueChange }) => {
   return (
       <ScrollView style={styles.questionBox}>
-        <Text>{label}</Text>
-        <Image source={image} style={styles.image} />
+        <Text style={styles.text}>{label}</Text>
+        <Image source={image} style={[styles.image]} />
         <RNPickerSelect
             onValueChange={onValueChange}
             items={options.map(option => ({ label: option, value: option }))}
             value={selectedValue}
-            placeholder={{ label: 'Select an answer', value: null }}
+            placeholder={{ label: 'Select an answer', value: null}}
         />
       </ScrollView>
   );
@@ -74,7 +74,7 @@ const App = () => {
   return (
       <ScrollView style={styles.container}>
         <StatusBar hidden={true} />
-        <Icon name={"paw"} size={20} color={'#000000'}><Text>Animal Quiz</Text></Icon>
+        <Icon name={"paw"} size={50} color={'#000000'}><Text>Animal Quiz</Text></Icon>
         {questions.map((question, index) => (
             <QuestionBox
                 key={index}
@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 20,
     flex: 1,
+    backgroundColor: '#A9A9A9' //Dark Grey
   },
   questionBox: {
     marginBottom: 20,
@@ -104,13 +105,19 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: 200,
-    borderRadius: 10,
+    borderRadius: 20 //Round
   },
   touchableText: {
     textAlign: 'center',
     color: 'blue',
     marginTop: 10,
-    fontSize: 16,
+    fontSize: 16
+  },
+  text:{
+    fontWeight: 'bold',//Bold
+    fontStyle: 'italic',//Italic
+    marginTop: 30, //Space
+    textAlign: 'center'
   },
 });
 
